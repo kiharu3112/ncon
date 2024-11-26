@@ -5,6 +5,11 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 set nowrap
+let g:loaded_perl_provider = 0
+
+" fzf
+set rtp+=/opt/homebrew/opt/fzf
+
 
 " vim-plug
 call plug#begin()
@@ -44,6 +49,7 @@ Plug 'nvimdev/lspsaga.nvim'
 " テレスコープ
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " ウィンドウサイズ変更
 Plug 'simeji/winresizer'
@@ -51,6 +57,13 @@ Plug 'simeji/winresizer'
 " git blame
 " Plug 'FabijanZulj/blame.nvim'
 Plug 'APZelos/blamer.nvim'
+
+"ALE
+Plug 'dense-analysis/ale'
+
+Plug 'akinsho/bufferline.nvim'
+
+Plug 'lewis6991/gitsigns.nvim'
 call plug#end()
 
 " エラーなどのハイライト
@@ -153,7 +166,7 @@ END
 nmap <silent> <space><space> :<C-u>CocList<cr>
 "スペースhでHover
 nmap <silent> <space>h :<C-u>call CocAction('doHover')<cr>
-"スペースdfでDefinition
+"スペースdfでDefinition "
 nmap <silent> <space>df <Plug>(coc-definition)
 "スペースrfでReferences
 nmap <silent> <space>rf <Plug>(coc-references)
@@ -163,9 +176,7 @@ nmap <silent> <space>rn <Plug>(coc-rename)
 nmap <silent> <space>fmt <Plug>(coc-format)
 "スペースeでファイルツリー(fern)
 nmap <silent> <space>e :Fern . -drawer -toggle -reveal=%<cr>
-" スペースgでgit status
-nmap <silent> <space>g :FernGitStatus<cr>
-"C-t で新規タブを開く
+"C-t で新規タブを開く "
 nmap <silent> <C-t> :tabnew<cr>
 "C-tab で1つ右のタブを開く
 nmap <silent> <C-tab> :tabnext<cr>
