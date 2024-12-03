@@ -188,12 +188,6 @@ nmap <silent> <C-c> :tabclose<cr>
 nmap <silent> <space>t :below terminal<cr>
 " terminalモードでもctrl+wでノーマルモードに戻る
 tnoremap <C-w> <C-\><C-n>
-" ファイルツリーからファイルを右に開く
-nmap <silent> <space>o :Fern %:h -drawer -reveal=%<cr>
-" ターミナルを新しいタブで開く
-nmap <silent> <space>T :tab terminal<cr>
-" スペースbで横にターミナルを開く
-nmap <silent> <space>b :rightbelow terminal<cr>
 
 " Telescope
 " ファイル検索
