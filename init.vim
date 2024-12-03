@@ -159,6 +159,31 @@ require('git').setup({
   },
 })
 END
+
+lua << EOF
+local actions = require("telescope.actions")
+local action_state = require("telescope.actions.state")
+
+require("telescope").setup {
+  defaults = {
+    mappings = {
+      i = { -- インサートモード時のマッピング
+        ["<C-e>"] = function(prompt_bufnr)
+          local entry = action_state.get_selected_entry()
+
+          -- Telescopeを閉じる
+          actions.close(prompt_bufnr)
+
+          -- ファイルを右に開く
+          vim.cmd("vsplit " .. vim.fn.fnameescape(entry.path))
+        end,
+      },
+    },
+  },
+}
+EOF
+
+
 " 以下ショートカット
 
 "ノーマルモードで
